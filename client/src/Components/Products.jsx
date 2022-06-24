@@ -20,29 +20,6 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const FilterContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Filter = styled.div`
-  margin: 20px;
-  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
-`;
-
-const FilterText = styled.span`
-  font-size: 20px;
-  font-weight: 600;
-  margin-right: 20px;
-  ${mobile({ marginRight: "0px" })}
-`;
-
-const Select = styled.select`
-  padding: 10px;
-  margin-right: 20px;
-  ${mobile({ margin: "10px 0" })}
-`;
-
 const Products = ({ cat, filters, sort, title, artists, selectedArtist }) => {
   const [artworks, setArtworks] = useState([]);
   const [filteredartworks, setFilteredArtworks] = useState([]);
@@ -61,7 +38,7 @@ const Products = ({ cat, filters, sort, title, artists, selectedArtist }) => {
     getArtworks();
   }, [cat]);
 
-  // artworks.length > 0 && artists(artworks);
+  //artworks.length > 0 && artists(artworks);
 
   useEffect(() => {
     cat &&

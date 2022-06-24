@@ -34,170 +34,183 @@ import OrderList from "./Components/admin/OrderList";
 import PaymentList from "./Components/admin/PaymentList";
 import EditArtwork from "./Components/admin/EditArtwork";
 import EditEvents from "./Components/admin/EditEvents";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
   const authCtx = useContext(AuthContext);
 
   return (
-    <ExhibitionCartProvider>
-      <CartProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/artworks/:category" element={<ArtworkList />} />
-            <Route path="/artwork/:id" element={<Artwork />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/Exhibition" element={<Exhibition />} />
-            {!authCtx.isLoggedIn && <Route path="/login" element={<Login />} />}
-            {!authCtx.isLoggedIn && (
-              <Route path="/register" element={<Register />} />
-            )}
+    <>
+      <ExhibitionCartProvider>
+        <CartProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/artworks/:category" element={<ArtworkList />} />
+              <Route path="/artwork/:id" element={<Artwork />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/Exhibition" element={<Exhibition />} />
+              {!authCtx.isLoggedIn && (
+                <Route path="/login" element={<Login />} />
+              )}
+              {!authCtx.isLoggedIn && (
+                <Route path="/register" element={<Register />} />
+              )}
 
-            <Route
-              path="/checkout"
-              element={
-                authCtx.isLoggedIn ? (
-                  <CheckOut />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                authCtx.isLoggedIn && !authCtx.isAdmin ? (
-                  <Profile />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/admin"
-              element={
-                authCtx.isAdmin ? <Admin /> : <Navigate to="/login" replace />
-              }
-            />
+              <Route
+                path="/checkout"
+                element={
+                  authCtx.isLoggedIn ? (
+                    <CheckOut />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  authCtx.isLoggedIn && !authCtx.isAdmin ? (
+                    <Profile />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/admin"
+                element={
+                  authCtx.isAdmin ? <Admin /> : <Navigate to="/login" replace />
+                }
+              />
 
-            <Route path="*" element={<Navigate to="/" replace />} />
-            <Route
-              path="/adminhome"
-              element={
-                authCtx.isAdmin ? (
-                  <AdminHome />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/addpaintings"
-              element={
-                authCtx.isAdmin ? (
-                  <AddPaintings />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/artist"
-              element={
-                authCtx.isAdmin ? <Artist /> : <Navigate to="/login" replace />
-              }
-            />
-            <Route
-              path="/addartist"
-              element={
-                authCtx.isAdmin ? (
-                  <AddArtist />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/editartist/:artist_id"
-              element={
-                authCtx.isAdmin ? (
-                  <EditArtist />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/admin/artworks"
-              element={
-                authCtx.isAdmin ? (
-                  <ArtworkTable />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/editartwork/:art_id"
-              element={
-                authCtx.isAdmin ? (
-                  <EditArtwork />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/events"
-              element={
-                authCtx.isAdmin ? <Events /> : <Navigate to="/login" replace />
-              }
-            />
-            <Route
-              path="/addevent"
-              element={
-                authCtx.isAdmin ? (
-                  <AddEvent />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/editevents/:id"
-              element={
-                authCtx.isAdmin ? (
-                  <EditEvents />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
+              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route
+                path="/adminhome"
+                element={
+                  authCtx.isAdmin ? (
+                    <AdminHome />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/addpaintings"
+                element={
+                  authCtx.isAdmin ? (
+                    <AddPaintings />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/artist"
+                element={
+                  authCtx.isAdmin ? (
+                    <Artist />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/addartist"
+                element={
+                  authCtx.isAdmin ? (
+                    <AddArtist />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/editartist/:artist_id"
+                element={
+                  authCtx.isAdmin ? (
+                    <EditArtist />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/admin/artworks"
+                element={
+                  authCtx.isAdmin ? (
+                    <ArtworkTable />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/editartwork/:art_id"
+                element={
+                  authCtx.isAdmin ? (
+                    <EditArtwork />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/events"
+                element={
+                  authCtx.isAdmin ? (
+                    <Events />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/addevent"
+                element={
+                  authCtx.isAdmin ? (
+                    <AddEvent />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/editevents/:id"
+                element={
+                  authCtx.isAdmin ? (
+                    <EditEvents />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
 
-            <Route
-              path="/orderlist"
-              element={
-                authCtx.isAdmin ? (
-                  <OrderList />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/paymentlist"
-              element={
-                authCtx.isAdmin ? (
-                  <PaymentList />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-          </Routes>
-        </Router>
-      </CartProvider>
-    </ExhibitionCartProvider>
+              <Route
+                path="/orderlist"
+                element={
+                  authCtx.isAdmin ? (
+                    <OrderList />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+              <Route
+                path="/paymentlist"
+                element={
+                  authCtx.isAdmin ? (
+                    <PaymentList />
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+            </Routes>
+          </Router>
+        </CartProvider>
+      </ExhibitionCartProvider>
+    </>
   );
 }
 

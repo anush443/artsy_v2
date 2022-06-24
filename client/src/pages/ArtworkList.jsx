@@ -38,7 +38,7 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
-const ProductList = () => {
+const ArtworkList = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
   const [filters, setFilter] = useState({});
@@ -114,4 +114,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ArtworkList;
